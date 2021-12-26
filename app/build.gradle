@@ -1,17 +1,14 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 android {
-    compileSdkVersion 30
+    compileSdkVersion androidCompileSdk
     defaultConfig {
         applicationId "com.udacity"
-        minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion androidMinSdk
+        targetSdkVersion androidTargetSdk
+        versionCode codeVersion
+        versionName nameVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,16 +17,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-rc1'
-    implementation 'com.google.android.material:material:1.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    //Kotlin
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.core:core-ktx:$core_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+
+    // Material Design
+    implementation "com.google.android.material:material:$material_version"
+
+    //Logger
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
+    //Testing
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_core_version"
 }

@@ -9,10 +9,10 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +23,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pendingIntent: PendingIntent
     private lateinit var action: NotificationCompat.Action
 
+    private val toolbar by lazy {
+        findViewById<Toolbar>(R.id.toolbar)
+    }
+
+    private val customButton by lazy {
+        findViewById<LoadingButton>(R.id.custom_button)
+    }
+
+    private val radioGroup by lazy {
+        findViewById<RadioGroup>(R.id.rg_download_options)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,8 +42,34 @@ class MainActivity : AppCompatActivity() {
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
-        custom_button.setOnClickListener {
-            download()
+        customButton.setOnClickListener {
+            //TODO complete the logic
+            //download()
+            checkDownloadOption()
+        }
+    }
+
+    private fun checkDownloadOption() {
+        val chosenOption = radioGroup.checkedRadioButtonId
+
+        if (chosenOption == -1) {
+            showShortToast(getString(R.string.no_option_chosen))
+            return
+        }
+
+        when (chosenOption) {
+            R.id.rb_glide -> {
+                //TODO replace with needed func
+                showShortToast("Glide")
+            }
+            R.id.rb_load_app -> {
+                //TODO replace with needed func
+                showShortToast("Load App")
+            }
+            R.id.rb_retrofit -> {
+                //TODO replace with needed func
+                showShortToast("Retrofit")
+            }
         }
     }
 
