@@ -1,13 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".DetailActivity"
+    tools:context=".ui.DetailActivity"
     tools:showIn="@layout/activity_detail">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnOK"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="@dimen/button_margin"
+        android:layout_marginEnd="@dimen/button_margin"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/ok_text"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFileName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvFileDescLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvFileNameLabel"
+        tools:text="LoadApp"
+        style="@style/ContentTextStyle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFileNameDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/ContentTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFileDescLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvFileDescLabel"
+        tools:text="Current repository by Udacity" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatusLabel"
+        style="@style/LabelTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/status_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFileDescLabel" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStatusDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvFileName"
+        app:layout_constraintTop_toTopOf="@+id/tvStatusLabel"
+        tools:text="Success"
+        tools:textColor="@android:color/holo_green_dark" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFileNameLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/file_name_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/LabelTextStyle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFileDescLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/description_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFileNameLabel"
+        style="@style/LabelTextStyle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
