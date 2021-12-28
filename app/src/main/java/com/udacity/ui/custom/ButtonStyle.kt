@@ -8,6 +8,6 @@ data class ItemStyle(
     var loadingColor: Int = Color.BLUE,
     var btnText: String = "Download",
     var btnCircleColor: Int = Color.YELLOW,
-    var btnLoadingDuration: Long = 6500
+    var btnLoadingDuration: Long = 4500
 )
 
