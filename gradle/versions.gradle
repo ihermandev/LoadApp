@@ -1,0 +1,28 @@
+ext {
+    //Application
+    codeVersion = 1
+    nameVersion = "1.0"
+
+    //Environment
+    kotlin_version = "1.5.21"
+    tools_version = "4.0.1"
+
+    //SDK
+    androidCompileSdk = 30
+    androidTargetSdk = 30
+    androidMinSdk = 24
+
+    //Android
+    core_version = "1.3.1"
+    appcompat_version = "1.2.0"
+    material_version = "1.4.0"
+    constraint_layout_version = "2.0.0-rc1"
+
+    // Lib
+    timber_version = "5.0.1"
+
+    //Testing
+    junit_version = "4.12"
+    androidx_ext_junit_version = "1.1.1"
+    androidx_espresso_core_version = "3.1.1"
+}
