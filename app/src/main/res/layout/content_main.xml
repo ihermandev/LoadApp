@@ -47,7 +47,24 @@
                     android:id="@+id/rb_retrofit"
                     style="@style/DownloadRadioButton"
                     android:text="@string/download_retrofit" />
+
+                <RadioButton
+                    android:id="@+id/rb_custom"
+                    style="@style/DownloadRadioButton"
+                    android:text="@string/download_custom" />
             </RadioGroup>
+
+            <EditText
+                android:id="@+id/et_custom"
+                android:hint="type your URL"
+                android:lines="1"
+                android:gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri|text"
+                android:importantForAutofill="no" />
         </LinearLayout>
 
     </ScrollView>

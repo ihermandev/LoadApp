@@ -7,6 +7,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Patterns
+import android.webkit.URLUtil
+import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     private val radioGroup by lazy {
         findViewById<RadioGroup>(R.id.rg_download_options)
+    }
+
+    private val editText by lazy {
+        findViewById<EditText>(R.id.et_custom)
     }
 
     private val downloadManager by lazy {
@@ -69,6 +76,8 @@ class MainActivity : AppCompatActivity() {
                 val description =
                     cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_DESCRIPTION))
 
+
+                println(status)
                 when (status) {
                     DownloadManager.STATUS_SUCCESSFUL -> {
                         notificationManager.sendNotification(
@@ -127,6 +136,22 @@ class MainActivity : AppCompatActivity() {
             R.id.rb_retrofit -> {
                 downloadID = download(downloadManager, defaultFiles[2])
             }
+            R.id.rb_custom -> {
+                performCustomLoading()
+            }
+        }
+    }
+
+    private fun performCustomLoading() {
+        val content = editText.text.toString()
+        if (URLUtil.isValidUrl(content)) {
+            downloadID = download(downloadManager,
+                FileItem(fileName = "Custom",
+                    fileDescription = "Your custom URL",
+                    fileUrl = content))
+        } else {
+            showShortToast("Not valid URL")
+            customButton.buttonState = ButtonState.Completed
         }
     }
 
