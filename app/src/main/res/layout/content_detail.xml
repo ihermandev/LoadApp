@@ -13,9 +13,7 @@
         android:id="@+id/btnOK"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
-        android:layout_marginStart="@dimen/button_margin"
-        android:layout_marginEnd="@dimen/button_margin"
-        android:layout_marginBottom="@dimen/button_margin"
+        android:layout_margin="@dimen/layout_margin"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/ok_text"
         android:textColor="@color/white"
@@ -26,20 +24,20 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFileName"
+        style="@style/ContentTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tvFileDescLabel"
         app:layout_constraintTop_toTopOf="@+id/tvFileNameLabel"
-        tools:text="LoadApp"
-        style="@style/ContentTextStyle" />
+        tools:text="LoadApp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFileNameDesc"
+        style="@style/ContentTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/ContentTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvFileDescLabel"
         app:layout_constraintTop_toTopOf="@+id/tvFileDescLabel"
@@ -69,20 +67,20 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFileNameLabel"
+        style="@style/LabelTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/file_name_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/LabelTextStyle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFileDescLabel"
+        style="@style/LabelTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/description_label"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFileNameLabel"
-        style="@style/LabelTextStyle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFileNameLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

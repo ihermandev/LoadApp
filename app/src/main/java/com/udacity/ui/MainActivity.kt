@@ -2,7 +2,6 @@ package com.udacity.ui
 
 import android.app.DownloadManager
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -12,11 +11,11 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.udacity.Const.defaultFiles
 import com.udacity.R
 import com.udacity.data.FileItem
+import com.udacity.ui.custom.LoadingButton
 import com.udacity.utils.download
 import com.udacity.utils.sendNotification
 import com.udacity.utils.showShortToast
@@ -60,6 +59,8 @@ class MainActivity : AppCompatActivity() {
 
             val cursor = downloadManager.query(query)
 
+            customButton.buttonState = ButtonState.Completed
+
             if (cursor.moveToFirst()) {
                 val status =
                     cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
@@ -101,6 +102,7 @@ class MainActivity : AppCompatActivity() {
             IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
         customButton.setOnClickListener {
+            customButton.buttonState = ButtonState.Completed
             checkDownloadOption()
         }
 
@@ -108,11 +110,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkDownloadOption() {
         val chosenOption = radioGroup.checkedRadioButtonId
-
         if (chosenOption == -1) {
             showShortToast(getString(R.string.no_option_chosen))
             return
         }
+
+        customButton.buttonState = ButtonState.Loading
 
         when (chosenOption) {
             R.id.rb_glide -> {
